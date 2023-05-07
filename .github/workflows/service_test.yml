@@ -1,0 +1,37 @@
+name: "Service Test"
+on:
+  workflow_dispatch:
+
+env:
+    BW_CLIENTID: ${{ secrets.CLIENT_ID }}
+    BW_CLIENTSECRET: ${{ secrets.CLIENT_SECRET }}
+
+job:
+  setup:
+    name: "Setup"
+    run-ons: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Upgrade Pip
+        run: pip install --upgrade pip
+      - name: Install poetry
+        run: pip install poetry
+      - name: Install dependencies
+        run: poetry install
+      - name: Install Playwright
+        run: poetry run playwright install
+      - name: Install Bitwarden CLI
+        run: sudo snap install bw
+      - name: Setup Bitwarden CLI
+        run: |
+            bw config server ${{ secrets.VAULT_URL }}
+            bw login --apikey
+
+#  homeassistant:
+#    needs: [setup]
+#    name: "Home Assistant"
