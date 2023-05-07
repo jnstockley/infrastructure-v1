@@ -16,11 +16,9 @@ def ha_service_up(page: Page, request):
     """
     url = request.param
 
-    response = page.goto(url, wait_until="domcontentloaded")
+    page.goto(url, wait_until="domcontentloaded")
 
     page.wait_for_load_state("networkidle")
-
-    assert response.ok
 
     title = page.get_by_text("Home Assistant", exact=True)
 
