@@ -2,9 +2,9 @@ name: "Setup Environment"
 on:
   workflow_call:
 
-env:
-  BW_CLIENTID=${{ secrets.CLIENT_ID }}
-  BW_CLIENTSECRET=${{ secrets.CLIENT_SECRET }}
+#env:
+#  BW_CLIENTID=${{ secrets.CLIENT_ID }}
+#  BW_CLIENTSECRET=${{ secrets.CLIENT_SECRET }}
 
 jobs:
   setup:
@@ -31,10 +31,7 @@ jobs:
         run: poetry run playwright install
       - name: Install Bitwarden CLI
         run: npm install -g @bitwarden/cli
-      - name: Setup Bitwarden CLI
-        run: |
-            bw config server ${{ secrets.VAULT_URL }}
-            bw config server ${{ secrets.VAULT_URL }}
-            bw login --apikey
-
-    
+      #- name: Setup Bitwarden CLI
+      #  run: |
+      #      bw config server ${{ secrets.VAULT_URL }}
+      #      bw login --apikey
