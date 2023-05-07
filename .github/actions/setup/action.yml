@@ -22,7 +22,7 @@ runs:
       run: poetry install
     - name: Install Playwright
       shell: bash
-      run: poetry run playwright install
+      run: poetry run playwright install --with-deps
     - name: Install Bitwarden CLI
       shell: bash
       run: npm install -g @bitwarden/cli
