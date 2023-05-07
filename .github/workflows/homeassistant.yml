@@ -2,6 +2,10 @@ name: "Home Assistant"
 on:
   workflow_dispatch:
 
+env:
+  BW_CLIENTID=${{ secrets.CLIENT_ID }}
+  BW_CLIENTSECRET=${{ secrets.CLIENT_SECRET }}
+
 jobs:
   homeassistant:
     name: "Home Assistant"
@@ -12,5 +16,13 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Environment
         uses: ./.github/actions/setup
+      - name: Setup Bitwarden CLI
+        run: |
+            bw config server ${{ secrets.VAULT_URL }}
+            bw login --apikey
+      - name: Setup Home Assistant env file
+        run: |
+          touch .ha_env
+          echo URLS=${{ secrets.HA_URLS }} >> .ha_env
       - name: Run Test
         run: poetry run pytest tests/services/test_homeassistant.py
