@@ -6,7 +6,7 @@ from playwright.sync_api import Page, expect
 from dotenv import dotenv_values
 
 
-config = dotenv_values(".ha_env")
+config = dotenv_values(".env")
 URLS = config["URLS"].split(", ")
 
 

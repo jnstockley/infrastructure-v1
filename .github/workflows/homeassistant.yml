@@ -19,7 +19,8 @@ jobs:
             bw login --apikey
       - name: Setup Home Assistant env file
         run: |
-          touch .ha_env
-          echo URLS=${{ secrets.HA_URLS }} >> .ha_env
+          touch .env
+          echo master_password=${{ secrets.MASTER_PASSWORD }} >> .env
+          echo URLS=${{ secrets.HA_URLS }} >> .env
       - name: Run Test
         run: poetry run pytest tests/services/test_homeassistant.py
