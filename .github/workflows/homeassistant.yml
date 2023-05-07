@@ -2,10 +2,6 @@ name: "Home Assistant"
 on:
   workflow_dispatch:
 
-env:
-  BW_CLIENTID=${{ secrets.CLIENT_ID }}
-  BW_CLIENTSECRET=${{ secrets.CLIENT_SECRET }}
-
 jobs:
   homeassistant:
     name: "Home Assistant"
@@ -19,6 +15,8 @@ jobs:
       - name: Setup Bitwarden CLI
         run: |
             bw config server ${{ secrets.VAULT_URL }}
+            export BW_CLIENTID=${{ secrets.CLIENT_ID }}
+            export BW_CLIENTSECRET=${{ secrets.CLIENT_SECRET }}
             bw login --apikey
       - name: Setup Home Assistant env file
         run: |
