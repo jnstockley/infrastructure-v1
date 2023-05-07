@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     # uses: jnstockley/infrastructure/.github/workflows/action.yml@main
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
       - name: Setup Environment
         uses: ./.github/actions/setup
       - name: Run Test
