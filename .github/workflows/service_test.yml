@@ -22,7 +22,7 @@ jobs:
       #- name: Install Playwright
       #  run: poetry run playwright install
       - name: Install Bitwarden CLI
-        run: sudo snap install bw
+        run: npm install -g @bitwarden/cli
       - name: Setup Bitwarden CLI
         run: |
             bw config server ${{ secrets.VAULT_URL }}
