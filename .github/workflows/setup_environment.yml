@@ -1,6 +1,10 @@
-name: "Service Test"
+name: "Setup Environment"
 on:
-  workflow_dispatch:
+  workflow_call:
+
+env:
+  BW_CLIENTID=${{ secrets.CLIENT_ID }}
+  BW_CLIENTSECRET=${{ secrets.CLIENT_SECRET }}
 
 jobs:
   setup:
@@ -30,10 +34,7 @@ jobs:
       - name: Setup Bitwarden CLI
         run: |
             bw config server ${{ secrets.VAULT_URL }}
-            export BW_CLIENTID=${{ secrets.CLIENT_ID }}
-            export BW_CLIENTSECRET=${{ secrets.CLIENT_SECRET }}
+            bw config server ${{ secrets.VAULT_URL }}
             bw login --apikey
 
-#  homeassistant:
-#    needs: [setup]
-#    name: "Home Assistant"
+    
