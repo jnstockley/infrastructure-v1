@@ -12,12 +12,17 @@ runs:
       with:
         node-version: latest
     - name: Upgrade Pip
+      shell: bash
       run: pip install --upgrade pip
     - name: Install poetry
+      shell: bash
       run: pip install poetry
     - name: Install dependencies
+      shell: bash
       run: poetry install
     - name: Install Playwright
+      shell: bash
       run: poetry run playwright install
     - name: Install Bitwarden CLI
+      shell: bash
       run: npm install -g @bitwarden/cli
