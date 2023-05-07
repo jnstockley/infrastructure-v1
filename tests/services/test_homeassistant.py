@@ -17,6 +17,10 @@ def test_service_up(page: Page, ha_service_up):
     :param page: The Playwright webpage
     :param ha_service_up: Fixture to test multiple URLs while re-using code
     """
+    ha_service_up.wait_for_load_state("networkidle")
+
+    page.wait_for_load_state("networkidle")
+
     username = ha_service_up.get_by_role("textbox", name="Username")
 
     password = page.get_by_role("textbox", name="Password")
@@ -37,6 +41,8 @@ def test_service_login(page: Page, ha_login):
     :param page: The Playwright webpage
     :param ha_login: Creds returned from the ha_login fixture for the specified instance
     """
+    page.wait_for_load_state("networkidle")
+
     username_textbox = page.get_by_role("textbox", name="Username")
 
     password_textbox = page.get_by_role("textbox", name="Password")
@@ -48,6 +54,8 @@ def test_service_login(page: Page, ha_login):
     password_textbox.fill(ha_login["password"])
 
     login_button.click()
+
+    page.wait_for_load_state("networkidle")
 
     authentication_desc = page.get_by_text("Authenticator app")
 
