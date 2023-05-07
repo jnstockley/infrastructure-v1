@@ -6,8 +6,7 @@ jobs:
   homeassistant:
     name: "Home Assistant"
     runs-on: ubuntu-latest
+    uses: jnstockley/infrastructure/.github/workflows/setup_environment.yml@main
     steps:
-      - name: Setup Environment
-        uses: jnstockley/infrastructure/.github/workflows/setup_environment.yml@main
       - name: Run Test
         run: poetry run pytest tests/services/test_homeassistant.py
