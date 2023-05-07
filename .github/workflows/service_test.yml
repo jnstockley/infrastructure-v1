@@ -30,7 +30,6 @@ jobs:
       - name: Setup Bitwarden CLI
         run: |
             bw config server ${{ secrets.VAULT_URL }}
-            bw login --apikey
 
 #  homeassistant:
 #    needs: [setup]
