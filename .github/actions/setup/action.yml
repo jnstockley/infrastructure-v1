@@ -1,16 +1,6 @@
-name: "Setup Environment"
-on:
-  workflow_call:
-
-#env:
-#  BW_CLIENTID=${{ secrets.CLIENT_ID }}
-#  BW_CLIENTSECRET=${{ secrets.CLIENT_SECRET }}
-
-jobs:
-  setup:
-    name: "Setup"
-    runs-on: ubuntu-latest
-    steps:
+runs:
+  using: "composite"
+  steps:
       - name: Check out repository
         uses: actions/checkout@v3
       - name: Setup Python
