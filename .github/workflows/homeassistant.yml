@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Environment
-        uses: .github/workflows/setup_environment.yml@main
+        uses: jnstockley/infrastructure/.github/workflows/setup_environment.yml@main
       - name: Run Test
         run: poetry run pytest tests/services/test_homeassistant.py
