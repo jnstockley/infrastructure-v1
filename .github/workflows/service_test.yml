@@ -3,13 +3,13 @@ on:
   workflow_dispatch:
 
 env:
-    BW_CLIENTID: ${{ secrets.CLIENT_ID }}
-    BW_CLIENTSECRET: ${{ secrets.CLIENT_SECRET }}
+  BW_CLIENTID: ${{ secrets.CLIENT_ID }}
+  BW_CLIENTSECRET: ${{ secrets.CLIENT_SECRET }}
 
-job:
+jobs:
   setup:
     name: "Setup"
-    run-ons: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
