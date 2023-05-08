@@ -36,7 +36,6 @@ def test_service_up(page: Page, ha_service_up):
 
 @pytest.mark.parametrize("ha_login", URLS, indirect=True)
 def test_service_login(page: Page, ha_login):
-
     page.wait_for_load_state("networkidle")
 
     username_textbox = page.get_by_role("textbox", name="Username")
