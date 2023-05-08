@@ -16,7 +16,9 @@ def ha_service_up(page: Page, request):
     """
     url = request.param
 
-    page.goto(url, wait_until="domcontentloaded")
+    response = page.goto(url, wait_until="domcontentloaded")
+
+    assert response.ok
 
     page.wait_for_load_state("networkidle")
 
