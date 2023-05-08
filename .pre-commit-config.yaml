@@ -1,9 +1,0 @@
-repos:
-  - repo: local
-    hooks:
-      - id: lint
-        name: lint
-        entry: poetry run pylist tests/
-        language: python
-        types:
-          - python

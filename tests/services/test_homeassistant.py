@@ -36,6 +36,11 @@ def test_service_up(page: Page, ha_service_up):
 
 @pytest.mark.parametrize("ha_login", URLS, indirect=True)
 def test_service_login(page: Page, ha_login):
+    """
+    Test to make sure we can log into the home assistance instance using our credentials
+    :param page: The Playwright webpage
+    :param ha_login: Creds returned from the ha_login fixture for the specified instance
+    """
     page.wait_for_load_state("networkidle")
 
     username_textbox = page.get_by_role("textbox", name="Username")
