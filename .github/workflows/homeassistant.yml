@@ -23,4 +23,4 @@ jobs:
           echo master_password=${{ secrets.MASTER_PASSWORD }} >> .env
           echo URLS=${{ secrets.HA_URLS }} >> .env
       - name: Run Test
-        run: poetry run pytest tests/services/test_homeassistant.py --browser webkit
+        run: poetry run pytest tests/services/test_homeassistant.py --browser firefox
