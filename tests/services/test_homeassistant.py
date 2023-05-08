@@ -71,6 +71,6 @@ def test_service_login(page: Page, ha_login):
 
     page.wait_for_load_state("networkidle")
 
-    user_full_name = page.get_by_text("Jack Stockley")
+    notifications = page.get_by_text("Notifications")
 
-    expect(user_full_name).to_have_text("Jack Stockley")
+    expect(notifications).to_have_text("Notifications")
