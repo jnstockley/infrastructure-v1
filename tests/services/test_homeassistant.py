@@ -7,7 +7,7 @@ from dotenv import dotenv_values
 
 
 config = dotenv_values(".env")
-URLS = config["URLS"].split(", ")
+URLS = config["HA_URLS"].split(", ")
 
 
 @pytest.mark.parametrize("ha_service_up", URLS, indirect=True)
