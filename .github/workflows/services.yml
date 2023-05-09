@@ -46,3 +46,18 @@ jobs:
           echo PROXY_MANAGER_URL=${{ secrets.PROXY_MANAGER_URL }} >> .env
       - name: Run Test
         run: poetry run pytest tests/services/test_nginx_proxy_manager.py --browser firefox
+
+  website:
+    name: "Website"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+      - name: Setup env file
+        run: |
+          touch .env
+          echo WEBSITE_URL=${{ secrets.WEBSITE_URL }} >> .env
+      - name: Run Test
+        run: poetry run pytest tests/services/test_website.py --browser firefox
