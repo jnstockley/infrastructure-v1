@@ -56,7 +56,7 @@ def test_service_login(page: Page):
 
     error_404_hosts = page.locator('xpath=//*[@id="dashboard"]/div[2]/div[4]/div/div')
 
-    expect(proxy_hosts).to_have_text("5 Proxy Hosts")
+    expect(proxy_hosts).to_have_text("6 Proxy Hosts")
 
     expect(redirection_hosts).to_have_text("0 Redirection Hosts")
 
